@@ -1,0 +1,14 @@
+@using TravelClient.mvc.Models;
+@model List<City>;
+<h1>Cities</h1>
+
+
+<ol>
+@foreach (City city in @Model)
+{
+    <ul>
+        <li><a href="/reviews/@city.CityId">Section: @city.CityName</a></li>
+    </ul>
+    <br>
+}
+</ol>
