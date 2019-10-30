@@ -54,3 +54,71 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+* {
+  box-sizing: border-box;
+}
+
+.info-holder {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.info-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+
+.info-item {
+  margin-top: 8px;
+  vertical-align: middle;
+  background-color: lightgray;
+  padding: 10px;
+  width: 100%;
+  border: outset rgba(175, 175, 175, 0.5);
+
+}
+
+@media (max-width: 1200px) {
+  .info-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .info-column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.info-tag-holder {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+.info-tag {
+  flex: 48%;
+  max-width: 48%;
+  padding: 0 4px;
+  font-weight: 600;
+  background-color: rgb(122, 122, 122);
+  color: white;
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+  border-radius: 2px;
+  overflow: hidden;
+  border: inset rgba(175, 175, 175, 0.5);
+}
+
+.fas-faded {
+  opacity: .2;
+}

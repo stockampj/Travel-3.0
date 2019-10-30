@@ -8,12 +8,7 @@
 {
     <ul>
         <li>
-            <a href="/reviews/@city.CityId">
-                @city.CityName @city.Rating @city.ReviewCount
-            </a>
-        </li>
-        <li>
-            @Html.ActionLink("link", "Index", "Reviews", new {id = city.CityId})
+            @Html.ActionLink($"{@city.CityName} {@city.Rating} {@city.ReviewCount}", "Show", "Reviews", new {id = city.CityId})
         </li>
     </ul>
     <br>

@@ -1,0 +1,80 @@
+@using TravelClient.mvc.Models;
+@model List<Review>;
+<h1>Reviews</h1>
+
+
+
+@{
+    int columnAssignment= 1;
+    List<Review> column1 = new List<Review> {};
+    List<Review> column2 = new List<Review> {};
+    List<Review> column3 = new List<Review> {};
+    List<Review> column4 = new List<Review> {};
+
+    @foreach (Review review in Model)
+    {
+        @switch(columnAssignment)
+        {
+            case 1:
+                column1.Add(review);
+                break;
+            case 2:
+                column2.Add(review);
+                break;
+            case 3:
+                column3.Add(review);
+                break;
+            case 4:
+                column4.Add(review);
+                break;
+            default:
+                break;
+        }
+
+        @if (columnAssignment >= 4)
+        {
+            columnAssignment = 1;
+        }
+        else
+        {
+            columnAssignment++;
+        } 
+    }
+    List<List<Review>> columnHolder = new List<List<Review>> {column1, column2, column3, column4};
+
+    <div class="info-holder row">
+        @foreach (List<Review> column in columnHolder)
+        {
+            <div class="info-column">
+                @foreach (Review review in column)
+                {
+                    <div class="info-item" id="@review.ReviewId">
+                        <p class="info-rating">
+                        @{
+                            string ratingOutput = "";
+                            @for (int l=1; l<=5; l++)
+                            {
+                                string star = "";
+                                @if (l<=review.Rating)
+                                {                                
+                                    star+= "<i class='fas fa-star'></i>";
+                                }
+                                else
+                                {
+                                    star+= "<i class='fas fa-star fas-faded'></i>";
+                                }
+                                ratingOutput+= star;
+                            }
+                            @Html.Raw(ratingOutput);
+                        }                            
+                        </p>
+                        <p class="info-description">
+                            @review.Blurb
+                        </p>
+                    </div>
+                }
+            </div>
+
+        }
+    </div>
+}
