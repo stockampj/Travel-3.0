@@ -5,7 +5,10 @@
 
 @foreach(City city in Model)
 {
-    @Html.ActionLink($"{@city.CityName} {@city.Rating} {@city.ReviewCount}", "Show", "Reviews", new {id = city.CityId})<hr>
+    @Html.ActionLink($"{@city.CityName} {@city.Rating} {@city.ReviewCount}", "Show", "Reviews", new {id = city.CityId})
+    <br>
+    @Html.ActionLink("Delete", "Delete", "Cities", new {id = @city.CityId})
+    <hr>
 }
 
  @Html.ActionLink("Add new city", "Create", new {id = @ViewBag.CountryId})<hr>

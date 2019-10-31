@@ -23,10 +23,8 @@ namespace TravelClient.mvc.Controllers
         [HttpPost]
         public IActionResult Create(City city)
         {
-            Console.WriteLine(city.CityName);
-
             ApiHelper.AddCity(city);
-            return RedirectToAction("Index");
+            return RedirectToAction("Show", "Cities", new {id = city.CountryId});
         }
         public IActionResult Show(int id)
         {
@@ -43,6 +41,12 @@ namespace TravelClient.mvc.Controllers
             ViewBag.CountryId = id;
 
             return View(targetCountryCities);
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            ApiHelper.DeleteCity(id);
+            return RedirectToAction("Index");
         }
 
     }

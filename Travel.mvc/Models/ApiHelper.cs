@@ -39,8 +39,14 @@ namespace TravelClient.mvc.Models
       return response.Content;
     }
 
-    
-  
+    public static async Task<string> DeleteCity(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api/cities/"+id);
+      RestRequest request = new RestRequest(Method.DELETE);
+      var response = await client.ExecuteTaskAsync(request);
+
+      return response.Content;
+    }
     // public static async Task<string> ApiCallPostIndex()
     // {
     //   RestClient client = new RestClient("http://localhost:5000/api/post");
