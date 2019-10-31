@@ -15,10 +15,23 @@ namespace TravelClient.mvc.Controllers
             var allCountries = Country.GetCountries();
             return View(allCountries);
         }
-        // public IActionResult Create()
-        // {
-        //      return View();
-        // }
+
+        public IActionResult Create()
+        {
+             return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Country country)
+        {
+            ApiHelper.AddCountry(country);
+            return RedirectToAction("Index", "Countries");
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            ApiHelper.DeleteCountry(id);
+            return RedirectToAction("Index");
+        }
 
     }
 

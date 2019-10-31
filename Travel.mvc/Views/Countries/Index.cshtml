@@ -9,8 +9,11 @@
     <ul>
         <li>
          @Html.ActionLink($"{@country.CountryName} ", "Show", "Cities", new {id = country.CountryId})
+          @Html.ActionLink("Delete", "Delete", "Countries", new {id = @country.CountryId})
         </li>
     </ul>
     <br>
 }
 </ol>
+
+ @Html.ActionLink("Create Country", "Create")

@@ -1,0 +1,10 @@
+@model TravelClient.mvc.Models.Country
+
+@using (Html.BeginForm())
+{
+
+    @Html.LabelFor(model => model.CountryName)
+    @Html.TextBoxFor(model => model.CountryName)
+    <hr>
+    <input type="submit" value="Add new Country">
+} 
