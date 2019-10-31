@@ -65,6 +65,25 @@ namespace TravelClient.mvc.Models
 
             return response.Content;
         }
+         public static async Task<string> DeleteReview(int id)
+        {
+            RestClient client = new RestClient("http://localhost:5000/api/reviews/" + id);
+            RestRequest request = new RestRequest(Method.DELETE);
+            var response = await client.ExecuteTaskAsync(request);
+
+            return response.Content;
+        }
+         public static async Task<string> AddReview(Review review)
+        {
+            RestClient client = new RestClient("http://localhost:5000/api/reviews");
+            RestRequest request = new RestRequest(Method.POST);
+            request.AddJsonBody(review);
+            var response = await client.ExecuteTaskAsync(request);
+
+            return response.Content;
+        }
+
+
 
 
     }

@@ -21,8 +21,32 @@ namespace TravelClient.mvc.Controllers
                     targetCityReviews.Add(review);
                 }
             }
+            ViewBag.CityId = id;
 
             return View(targetCityReviews);
         }
+         public IActionResult Create(int id)
+        {
+             ViewBag.CityId = id;
+             Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+             Console.WriteLine(ViewBag.CityId);
+             return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Review review)
+        {
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine(review.CityId);
+            ApiHelper.AddReview(review);
+            return RedirectToAction("Show", "Reviews", new {id = review.CityId});
+        }
+        
+          public IActionResult Delete(int id)
+        {
+            ApiHelper.DeleteReview(id);
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }

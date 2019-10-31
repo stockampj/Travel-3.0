@@ -8,13 +8,15 @@
 @foreach (Review review in Model)
 {
     <ul>
-        <li>Section: @review.ReviewId</li>
-        <li>Title: @review.Blurb</li>
-        <li>Abstract: @review.Rating</li>
-        <li>Url: @review.UserId</li>
-        <li>Byline: @review.CityId</li>
+        <li>id: @review.ReviewId</li>
+        <li>review: @review.Blurb</li>
+        <li>rating: @review.Rating</li>
+        <li>Userid: @review.UserId</li>
+        <li>cityid: @review.CityId</li>
+        @Html.ActionLink("Delete", "Delete", "Reviews", new {id = @review.ReviewId})
     </ul>
     <br>
 }
 </ol>
+ 
 @Html.ActionLink("Countries",  "Index", "Countries");
