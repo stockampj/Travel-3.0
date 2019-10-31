@@ -28,15 +28,11 @@ namespace TravelClient.mvc.Controllers
          public IActionResult Create(int id)
         {
              ViewBag.CityId = id;
-             Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-             Console.WriteLine(ViewBag.CityId);
              return View();
         }
         [HttpPost]
         public IActionResult Create(Review review)
         {
-            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            Console.WriteLine(review.CityId);
             ApiHelper.AddReview(review);
             return RedirectToAction("Show", "Reviews", new {id = review.CityId});
         }
@@ -45,6 +41,19 @@ namespace TravelClient.mvc.Controllers
         {
             ApiHelper.DeleteReview(id);
             return RedirectToAction("Index", "Home");
+        }
+         public IActionResult Edit(int id)
+        {
+            List<Review> reviewInList = Review.GetReview(id);
+
+            return View(reviewInList[0]);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Review review)
+        {
+            ApiHelper.EditReview(review);
+            return RedirectToAction("Show", "Reviews", new {id = review.CityId});
         }
 
 

@@ -71,6 +71,9 @@
                         <p class="info-description">
                             @review.Blurb
                         </p>
+                        <p class="info-description">
+                            @Html.ActionLink("Edit", "Edit", "Reviews", new {id = @review.ReviewId})
+                        </p>
                     </div>
                 }
             </div>

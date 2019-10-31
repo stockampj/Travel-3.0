@@ -28,5 +28,23 @@ namespace TravelClient.mvc.Models
         return reviewList;
 
         }
+
+        public static List<Review> GetReview(int id)
+        {
+            var apiCallTask = ApiHelper.GetReview(id);
+            var result = apiCallTask.Result;
+
+            JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+
+            List<Review> reviewList = new List<Review> ();
+            foreach (JObject reviewJSON in jsonResponse)
+            {
+                Review  newReview = JsonConvert.DeserializeObject<Review> (reviewJSON.ToString());
+                reviewList.Add(newReview);
+            }
+        return reviewList;
+
+        }
+
     }
 }

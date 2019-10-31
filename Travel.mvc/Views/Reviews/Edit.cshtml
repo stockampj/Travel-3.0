@@ -1,0 +1,16 @@
+@model TravelClient.mvc.Models.Review
+
+@using (Html.BeginForm())
+{
+   
+    @Html.LabelFor(model => model.Blurb)
+    @Html.EditorFor(model => model.Blurb)
+     @Html.LabelFor(model => model.Rating)
+    @Html.EditorFor(model => model.Rating)
+
+    <input id="UserId" name="UserId" value="@Model.UserId" type="hidden">
+    <input id="ReviewId" name="ReviewId" value="@Model.ReviewId" type="hidden">
+    <input id="CityId" name="CityId" value="@Model.CityId" type="hidden">
+    <hr>
+    <input type="submit" value="Edit review">
+} 

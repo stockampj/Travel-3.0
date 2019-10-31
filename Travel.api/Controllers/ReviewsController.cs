@@ -23,7 +23,7 @@ namespace Travel.Controllers
         /// You may enter a String with a City ID or a rating minimum to filter your searches.
         /// </summary>
         [HttpGet]
-        public ActionResult<IEnumerable<Review>> Get(string cityId, string rating)
+        public ActionResult<IEnumerable<Review>> Get(string cityId, string rating, String reviewId)
         {
             var query = _db.Reviews.AsQueryable();
 
@@ -39,6 +39,12 @@ namespace Travel.Controllers
             double ratingDouble = Double.Parse(rating);
             query = query
                 .Where(review => review.Rating >= ratingDouble);
+            }
+            if( reviewId != null)
+            {
+            int reviewIdint = Int32.Parse(reviewId);
+            query = query
+                .Where(review => review.ReviewId == reviewIdint);
             }
 
             return query.ToList();
