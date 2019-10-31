@@ -31,8 +31,8 @@ namespace TravelClient.mvc.Models
 
     public static async Task<string> AddCity(City city)
     {
-      RestClient client = new RestClient("http://localhost:5000/api/cities/post");
-      RestRequest request = new RestRequest("/", Method.POST);
+      RestClient client = new RestClient("http://localhost:5000/api/cities");
+      RestRequest request = new RestRequest(Method.POST);
       request.AddJsonBody(city);
       var response = await client.ExecuteTaskAsync(request);
 

@@ -23,7 +23,7 @@ namespace TravelClient.mvc.Controllers
         [HttpPost]
         public IActionResult Create(City city)
         {
-
+            Console.WriteLine(city.CityName);
 
             ApiHelper.AddCity(city);
             return RedirectToAction("Index");

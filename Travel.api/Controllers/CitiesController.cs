@@ -38,6 +38,8 @@ namespace Travel.Controllers
         [HttpPost]
         public void Post([FromBody] City city)
         {
+            Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine(city.CityName);
             _db.Cities.Add(city);
             _db.SaveChanges();
             
