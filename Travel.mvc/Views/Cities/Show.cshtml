@@ -1,0 +1,11 @@
+@using TravelClient.mvc.Models;
+@model List<City>;
+
+<h1>Cities</h1>
+
+@foreach(City city in Model)
+{
+    @Html.ActionLink($"{@city.CityName} {@city.Rating} {@city.ReviewCount}", "Show", "Reviews", new {id = city.CityId})<hr>
+}
+
+ @Html.ActionLink("Add new city", "Create", new {id = @ViewBag.CountryId})<hr>

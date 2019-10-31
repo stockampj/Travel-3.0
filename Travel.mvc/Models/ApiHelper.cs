@@ -21,6 +21,24 @@ namespace TravelClient.mvc.Models
       return response.Content;
     }
 
+    public static async Task<string> ApiCallGetCountries()
+    {
+      RestClient client = new RestClient("http://localhost:5000/api/countries");
+      RestRequest request = new RestRequest("/", Method.GET);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
+
+    public static async Task<string> AddCity(City city)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api/cities/post");
+      RestRequest request = new RestRequest("/", Method.POST);
+      request.AddJsonBody(city);
+      var response = await client.ExecuteTaskAsync(request);
+
+      return response.Content;
+    }
+
     
   
     // public static async Task<string> ApiCallPostIndex()

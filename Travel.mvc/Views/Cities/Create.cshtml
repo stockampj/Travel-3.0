@@ -1,0 +1,11 @@
+@model TravelClient.mvc.Models.City
+
+@using (Html.BeginForm())
+{
+
+    @Html.LabelFor(model => model.CityName)
+    @Html.TextBoxFor(model => model.CityName)
+    <input id="CountryId" name="CountryId" value="@ViewBag.CountryId" type="hidden">
+    <hr>
+    <input type="submit" value="Add new city">
+} 

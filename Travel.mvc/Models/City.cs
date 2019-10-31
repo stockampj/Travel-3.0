@@ -26,7 +26,7 @@ namespace TravelClient.mvc.Models
                 cityList.Add(newCity);
             }
         return cityList;
-
         }
+
     }
 }
