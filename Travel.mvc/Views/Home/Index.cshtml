@@ -1,22 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<h1>All Reviews:</h1>
-
-<ol>
-@foreach (Review review in Model)
-{
-    <ul>
-        <li>id: @review.ReviewId</li>
-        <li>review: @review.Blurb</li>
-        <li>rating: @review.Rating</li>
-        <li>Userid: @review.UserId</li>
-        <li>cityid: @review.CityId</li>
-        @Html.ActionLink("Delete", "Delete", "Reviews", new {id = @review.ReviewId})
-    </ul>
-    <br>
-}
-</ol>
  
-@Html.ActionLink("Countries",  "Index", "Countries");
+
+
+<img src='@Url.Content("~/img/globe.gif")'>
